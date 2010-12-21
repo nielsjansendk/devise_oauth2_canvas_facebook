@@ -34,7 +34,7 @@ module Devise
         end
         
         def create_with_facebook_user(fb_user, token,client,  options)
-          user = new(facebook_uid_field.to_sym => fb_user.id, :password => "fakepass", :password_confirmation => "fakepass")
+          user = new(facebook_uid_field.to_sym => fb_user['id'], :password => "fakepass", :password_confirmation => "fakepass")
           user.skip_confirmation! if user.respond_to?(:skip_confirmation!)
           user.do_update_facebook_user(fb_user, token, client, options)
           user
